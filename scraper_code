@@ -11,6 +11,7 @@ def scrape(s1,s2):
                                       from_param=s1,
                                       to=s2,
                                       language='en')
+    print(all_articles)
     for j in all_articles['articles']:
         d=dict(title=j['title'] , content=j['content'])
         l.append(d)
@@ -18,13 +19,16 @@ def scrape(s1,s2):
     print(l)
     
 
-start =datetime.datetime.now().isoformat()
-time.sleep(1500)
-stop=datetime.datetime.now().isoformat()
+start =datetime.datetime.now()
+print(start)
+time.sleep(3600)
+stop=datetime.datetime.now()
 while True:
-        print(start)
-        print(stop)
+        print(str(start))
+        print(str(stop))
         scrape(str(start),str(stop))
-        time.sleep(1500)
-        start=stop
-        stop=datetime.datetime.now().isoformat()
+        time.sleep(4800)
+        start=stop - datetime.timedelta(seconds=1200)
+        stop=datetime.datetime.now() - datetime.timedelta(seconds=1200) 
+        
+        
